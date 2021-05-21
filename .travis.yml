@@ -34,6 +34,7 @@ script: >
   fi &&
   if [ x${TEST} = xunit_test ]; then
     echo unit test Start
+    echo unit test
     echo unit test End
   fi &&
   if [ x${TEST} = xcode_scan ]; then
