@@ -49,6 +49,7 @@ script: >
     docker-compose up -d
     docker-compose ps
     docker ps
+    curl --version
     curl http://localhost:3000/api/v1.0/register
     echo Smoke Test Start
     cd autotest
