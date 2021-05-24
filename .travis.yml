@@ -49,6 +49,11 @@ script: >
     docker-compose up -d
     docker-compose ps
     docker ps
+    echo Start logs
+    docker run -d --name annotation-service-logs annotation-service
+    docker ps
+    docker logs annotation-service-logs
+    echo End
     echo Curl Start 1: http://localhost:3000/api/v1.0/register
     curl -v http://localhost:3000/api/v1.0/register
     echo Curl End
