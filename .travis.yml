@@ -49,8 +49,11 @@ script: >
     docker-compose up -d
     docker-compose ps
     docker ps
-    echo Curl Start
+    echo Curl Start: http://localhost:3000/api/v1.0/register
     curl -v http://localhost:3000/api/v1.0/register
+    echo Curl End
+    echo Curl Start: http://127.0.0.1:3000/api/v1.0/register
+    curl -v http://127.0.0.1:3000/api/v1.0/register
     echo Curl End
     echo Smoke Test Start
     cd autotest
