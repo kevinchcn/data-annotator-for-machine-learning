@@ -52,6 +52,9 @@ script: >
     echo Curl Start 1: http://localhost:3000/api/v1.0/register
     curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
     echo Curl End
+    echo Curl http://localhost:3000/api/v1.0/login
+    curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://localhost:3000/api/v1.0/login
+    echo Curl End
     echo Smoke Test Start
     cd autotest
     npm install
