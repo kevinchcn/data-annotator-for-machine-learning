@@ -51,6 +51,7 @@ script: >
     docker-compose up -d
     docker-compose ps
     echo Curl Start 1
+    cat /etc/hosts
     docker exec -it e2e curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' service:3000/api/v1.0/register
     echo Curl End 1
     echo Curl Start 2
