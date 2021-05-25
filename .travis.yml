@@ -53,23 +53,11 @@ script: >
     docker-compose up -d
     docker-compose ps
     docker ps
-    echo Curl Start 1: http://[::1]:3000/api/v1.0/register
-    curl -X -6 PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://[::1]:3000/api/v1.0/register
-    echo Curl End
-    echo Curl Start 1: http://[0:0:0:0:0:0:0:1]:3000/api/v1.0/register
-    curl -X -6 PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://[0:0:0:0:0:0:0:1]:3000/api/v1.0/register
-    echo Curl End
-    echo Curl Start 1: http://0:0:0:0:0:0:0:1:3000/api/v1.0/register
-    curl -X -6 PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://0:0:0:0:0:0:0:1:3000/api/v1.0/register
-    echo Curl End
     echo Curl Start 1: http://[::]:3000/api/v1.0/register
-    curl -X -6 PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://[::]:3000/api/v1.0/register
+    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://[::]:3000/api/v1.0/register
     echo Curl End
     echo Curl Start 2: http://localhost:3000/api/v1.0/register
-    curl -X -6 PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
-    echo Curl End
-    echo Curl 1 http://[::]:3000/api/v1.0/login
-    curl -X -6 POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://[::]:3000/api/v1.0/login
+    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
     echo Curl End
     echo netstat Start
     netstat -tulpn
