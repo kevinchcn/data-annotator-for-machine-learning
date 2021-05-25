@@ -52,7 +52,7 @@ script: >
     echo Start logs -------------------------------------------------------------
     docker run -d -it --name annotation-service-logs annotation-service
     docker ps
-    docker logs -f annotation-service-logs
+    docker logs annotation-service-logs
     echo End --------------------------------------------------------------------
     echo Curl Start 1: http://localhost:3000/api/v1.0/register
     curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
