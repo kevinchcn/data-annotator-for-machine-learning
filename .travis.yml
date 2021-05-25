@@ -54,7 +54,8 @@ script: >
     docker exec -it e2e curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://service:3000/api/v1.0/register
     echo Curl End 1
     echo Curl Start 2
-    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://service.dataannotatorformachinelearning_bridge:3000/api/v1.0/register
+    HN=`hostname`
+    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://${HN}:3000/api/v1.0/register
     echo Curl End 2
     echo Smoke Test Start
     cd autotest
