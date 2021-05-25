@@ -49,16 +49,8 @@ script: >
     docker-compose up -d
     docker-compose ps
     docker ps
-    echo Start logs -------------------------------------------------------------
-    docker run -d -it --name annotation-service-logs annotation-service
-    docker ps
-    docker logs annotation-service-logs
-    echo End --------------------------------------------------------------------
     echo Curl Start 1: http://localhost:3000/api/v1.0/register
     curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
-    echo Curl End
-    echo Curl Start 2: http://localhost:3000/health
-    curl -v http://localhost:3000/health
     echo Curl End
     echo Smoke Test Start
     cd autotest
