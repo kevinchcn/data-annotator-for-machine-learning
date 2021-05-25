@@ -51,8 +51,7 @@ script: >
     docker-compose up -d
     docker-compose ps
     echo Curl Start 1
-    docker exec -it e2e ping service
-    docker exec -it e2e curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://service:3000/api/v1.0/register
+    docker exec -it e2e curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://service.dataannotatorformachinelearning_bridge:3000/api/v1.0/register
     echo Curl End
     echo Smoke Test Start
     cd autotest
