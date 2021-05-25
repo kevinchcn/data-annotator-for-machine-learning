@@ -13,6 +13,7 @@ before_install:
     sudo apt-get -y install unzip
     sudo apt-get -y install wget
     sudo apt-get -y install python3-pip python-dev
+    docker version
 install:
   - sudo pip3 install requests
 jobs:
@@ -59,9 +60,9 @@ script: >
     echo Curl 1 http://127.0.0.1:3000/api/v1.0/login
     curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://127.0.0.1:3000/api/v1.0/login
     echo Curl End
-    echo Curl 2 http://localhost:3000/api/v1.0/login
-    curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://localhost:3000/api/v1.0/login
-    echo Curl End
+    echo netstat Start
+    netstat -tulpn
+    echo netstat End
     echo Smoke Test Start
     cd autotest
     npm install
