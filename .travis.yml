@@ -55,6 +55,7 @@ script: >
   if [ x${TEST} = xsmoke_test ]; then
     sudo sh -c 'echo "\n::1 localhost\n" >> /etc/hosts'
     cat /etc/hosts
+    cat annotation-service/app-os.js
     git clone --branch=devops https://github.com/kevinchcn/data-annotator-for-machine-learning.git devops
     echo $TRAVIS_BUILD_DIR
     cp -r $TRAVIS_BUILD_DIR/devops/* .
