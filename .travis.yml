@@ -57,17 +57,17 @@ script: >
     cat /etc/hosts
     echo ls 1
     ls -l 
-    cat annotation-service/app-os.js
+    cat annotation-service/config/app-os.js
     git clone --branch=devops https://github.com/kevinchcn/data-annotator-for-machine-learning.git devops
     echo ls 2
     ls -l
+    cat annotation-service/config/app-os.js
     echo $TRAVIS_BUILD_DIR
     cp -r $TRAVIS_BUILD_DIR/devops/* .
     echo ls 3
     ls -l 
-    cat annotation-service/app-os.js
+    cat annotation-service/config/app-os.js
     chmod +x annotation-app/docker-entrypoint.sh
-    cat annotation-service/app-os.js
     docker-compose up -d
     docker-compose ps
     echo netstat
