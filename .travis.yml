@@ -74,8 +74,9 @@ script: >
     curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://127.0.0.1:3000/api/v1.0/register
     echo Curl End 3
     echo Curl Start 4
-    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
+    curl -X PUT -6 -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
     echo Curl End 4
+    docker logs -f service
     echo Smoke Test Start
     cd autotest
     npm install
