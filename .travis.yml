@@ -1,4 +1,4 @@
-dist: trusty
+dist: Xenial
 sudo: required
 group: deprecated-2017Q4
 language: node_js
