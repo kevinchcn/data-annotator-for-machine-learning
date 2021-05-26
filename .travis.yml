@@ -52,14 +52,15 @@ script: >
   fi &&
   if [ x${TEST} = xsmoke_test ]; then
     sudo sh -c 'echo "\n::1 localhost\n" >> /etc/hosts'
+    cat /etc/hosts
     git clone --branch=devops https://github.com/kevinchcn/data-annotator-for-machine-learning.git devops
     echo $TRAVIS_BUILD_DIR
     cp -r $TRAVIS_BUILD_DIR/devops/* .
     chmod +x annotation-app/docker-entrypoint.sh
-    netstat -tulpen
     cat annotation-service/config/app-os.js
     docker-compose up -d
     docker-compose ps
+    netstat -tulpen
     echo Curl Start 1
     curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
     echo Curl End 1
