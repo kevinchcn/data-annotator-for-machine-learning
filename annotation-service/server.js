@@ -76,7 +76,7 @@ authService.authentication().then(data => {
       api => app.use(`/api/${API_VERSION}`, require(api))
     );
     //consume SQS message
-    consumeSQSMessage();
+    //consumeSQSMessage();
     const server = http.createServer(app);
     server.listen(config.serverPort, () => console.log(`[ SERVER ] API running on localhost:${config.serverPort}`));
 });
