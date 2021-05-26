@@ -54,7 +54,11 @@ script: >
     docker-compose up -d
     docker-compose ps
     echo netstat
+    docker-compose version
     netstat -tulpen
+    ls -l /etc/hosts
+    chmod 777 /etc/hosts
+    ls -l /etc/hosts
     sudo echo "::1 localhost" >> /etc/hosts
     sudo echo ":::1 localhost" >> /etc/hosts
     cat /etc/hosts
