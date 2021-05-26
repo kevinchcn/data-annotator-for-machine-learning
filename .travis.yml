@@ -56,13 +56,20 @@ script: >
     echo $TRAVIS_BUILD_DIR
     cp -r $TRAVIS_BUILD_DIR/devops/* .
     chmod +x annotation-app/docker-entrypoint.sh
+    cat annotation-sevice/config/app-os.js
     docker-compose up -d
     docker-compose ps
     echo Curl Start 1
     curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
     echo Curl End 1
     echo Curl Start 2
-    curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' service:3000/api/v1.0/login
+    curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://localhost:3000/api/v1.0/login
+    echo Curl End 2
+    echo Curl Start 1
+    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://127.0.0.1:3000/api/v1.0/register
+    echo Curl End 1
+    echo Curl Start 2
+    curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://127.0.0.1:3000/api/v1.0/login
     echo Curl End 2
     echo Smoke Test Start
     cd autotest
