@@ -50,13 +50,20 @@ script: >
     chmod +x annotation-app/docker-entrypoint.sh
     docker-compose up -d
     docker-compose ps
-    echo Curl Start 1
+    echo netstat
+    netstat -tulpen
     cat /etc/hosts
     docker exec -it e2e curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' service:3000/api/v1.0/register
     echo Curl End 1
     echo Curl Start 2
     docker exec -it e2e curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' service:3000/api/v1.0/login
     echo Curl End 2
+    echo Curl Start 3
+    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' 127.0.1.1:3000/api/v1.0/register
+    echo Curl End 3
+    echo Curl Start 4
+    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' localhost:3000/api/v1.0/register
+    echo Curl End 4
     echo Smoke Test Start
     cd autotest
     npm install
