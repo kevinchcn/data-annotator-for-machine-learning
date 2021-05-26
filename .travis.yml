@@ -6,6 +6,8 @@ node_js:
 python:
   - 3.4
 before_install:
+- echo '{"ipv6":true,"fixed-cidr-v6":"2001:db8:1::/64"}' | sudo tee /etc/docker/daemon.json
+- sudo service docker restart
 - |
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
       echo "Only docs were updated, stopping build process."
@@ -14,9 +16,6 @@ before_install:
     sudo apt-get -y install unzip
     sudo apt-get -y install wget
     sudo apt-get -y install python3-pip python-dev
-    echo version
-    docker version
-    docker-compose version
 install:
   - sudo pip3 install requests
 jobs:
