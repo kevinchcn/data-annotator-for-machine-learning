@@ -1,4 +1,5 @@
 dist: trusty
+sudo: required
 language: node_js
 node_js:
   - "10"
@@ -54,8 +55,8 @@ script: >
     docker-compose ps
     echo netstat
     netstat -tulpen
-    echo "::1 localhost" >> /etc/hosts
-    echo ":::1 localhost" >> /etc/hosts
+    sudo echo "::1 localhost" >> /etc/hosts
+    sudo echo ":::1 localhost" >> /etc/hosts
     cat /etc/hosts
     docker exec -it e2e curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' service:3000/api/v1.0/register
     echo Curl End 1
