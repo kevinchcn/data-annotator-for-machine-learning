@@ -56,7 +56,8 @@ script: >
     echo $TRAVIS_BUILD_DIR
     cp -r $TRAVIS_BUILD_DIR/devops/* .
     chmod +x annotation-app/docker-entrypoint.sh
-    cat annotation-sevice/config/app-os.js
+    netstat -tulpen
+    cat annotation-service/config/app-os.js
     docker-compose up -d
     docker-compose ps
     echo Curl Start 1
@@ -72,9 +73,10 @@ script: >
     curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://127.0.0.1:3000/api/v1.0/login
     echo Curl End 2
     echo Smoke Test Start
-    cd autotest
-    npm install
-    npm run webdriver
-    npm run e2e
-    echo Smoke Test End
+    # cd autotest
+    # npm install
+    # npm run webdriver
+    # npm run e2e
+    # echo Smoke Test End
+    docker logs -f service
   fi
