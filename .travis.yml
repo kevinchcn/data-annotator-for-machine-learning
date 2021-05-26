@@ -28,8 +28,6 @@ jobs:
   - name: "Smoke Test"
     env: TEST=smoke_test
 before_script:
-  # Add an IPv6 config - see the corresponding Travis issue
-  # https://github.com/travis-ci/travis-ci/issues/8361
   - if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
       sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6';
     fi
@@ -52,27 +50,17 @@ script: >
   fi &&
   if [ x${TEST} = xsmoke_test ]; then
     sudo sh -c 'echo "\n::1 localhost\n" >> /etc/hosts'
-    cat /etc/hosts
     git clone --branch=devops https://github.com/kevinchcn/data-annotator-for-machine-learning.git devops
-    echo $TRAVIS_BUILD_DIR
     cp -r $TRAVIS_BUILD_DIR/devops/* .
     chmod +x annotation-app/docker-entrypoint.sh
-    cat annotation-service/config/app-os.js
     docker-compose up -d
     docker-compose ps
-    netstat -tulpen
     sleep 5
     echo Curl Start 1
     curl -X PUT -6 -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://localhost:3000/api/v1.0/register
     echo Curl End 1
     echo Curl Start 2
     curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://localhost:3000/api/v1.0/login
-    echo Curl End 2
-    echo Curl Start 1
-    curl -X PUT -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password","uname":"Joe K Qiao"}' http://127.0.0.1:3000/api/v1.0/register
-    echo Curl End 1
-    echo Curl Start 2
-    curl -X POST -H "Content-Type: application/json" -d '{"email":"joeq@vmware.com","password":"password"}' http://127.0.0.1:3000/api/v1.0/login
     echo Curl End 2
     echo Smoke Test Start
     cd autotest
