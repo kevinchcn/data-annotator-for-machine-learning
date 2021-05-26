@@ -13,7 +13,9 @@ before_install:
     sudo apt-get -y install unzip
     sudo apt-get -y install wget
     sudo apt-get -y install python3-pip python-dev
+    echo version
     docker version
+    docker-compose version
 install:
   - sudo pip3 install requests
 jobs:
